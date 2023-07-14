@@ -1,3 +1,11 @@
+let player = {
+  name: "Per",
+  chips: 145,
+  sayHello: function(){
+    console.log("Heisann!")
+  }
+}
+
 let cards = [];
 let sum = 0;
 let hasBlackJack = false;
@@ -6,8 +14,9 @@ let message = "";
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
+let playerEl = document.getElementById('player-el');
 
-console.log(cards);
+playerEl.textContent = player.name + ": $" + player.chips;
 
 // let sumEl = document.querySelector('#sum-el');  // query = ask, question + selector = CSS selector, ask for a selector
 
@@ -52,9 +61,13 @@ function renderGame() {
   messageEl.textContent = message;
 }
 
+
 function newCard() {
+  if(isAlive === true && hasBlackJack === false){
   let card = getRandomCard();
   sum += card;
   cards.push(card);
   renderGame();
 }
+}
+ 
